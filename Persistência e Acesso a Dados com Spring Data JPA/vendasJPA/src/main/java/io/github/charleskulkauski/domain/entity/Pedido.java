@@ -1,10 +1,12 @@
 package io.github.charleskulkauski.domain.entity;
 
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Pedido {
 
+    @Id
     private Integer id;
     private Cliente cliente;
     private LocalDate dataPedido;

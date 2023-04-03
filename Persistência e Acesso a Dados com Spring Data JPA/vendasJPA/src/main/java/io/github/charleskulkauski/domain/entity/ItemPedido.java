@@ -1,7 +1,10 @@
 package io.github.charleskulkauski.domain.entity;
 
+import javax.persistence.Id;
+
 public class ItemPedido {
 
+    @Id
     private Integer id;
     private Pedido pedido;
     private Produto produto;

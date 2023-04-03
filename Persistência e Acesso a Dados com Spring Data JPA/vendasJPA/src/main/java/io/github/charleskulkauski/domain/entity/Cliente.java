@@ -1,8 +1,21 @@
 package io.github.charleskulkauski.domain.entity;
 
+import javax.persistence.*;
+
+@Entity
+//A presença do table só é necessária quando a classe não é do mesmo nome da sua tabela
+//@Table(name="cliente")
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //Mapear para direcionar na coluna caso tenha nome diferente
+    @Column(name = "id")
     private Integer id;
+
+    //Nome da coluna tem que ser igual ao da váriavel
+    //Updatable = false ; propriedade que não permite dar update na tabela
+    @Column(name = "nome", length = 100)
     private String nome;
 
     public Cliente() {

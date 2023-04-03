@@ -19,40 +19,53 @@ public class Main {
         return args -> {
             Cliente cliente = new Cliente();
             //Cadastro de clientes no banco
-            cliente.setNome("Charles");
-            clientes.salvar(cliente);
+            System.out.println("Cadastrando clientes....");
+            clientes.save(new Cliente("Charles"));
+            clientes.save(new Cliente("Outro cliente"));
 
-            //Exibindo os clientes com as informações do banco
-            clientes.salvar(new Cliente("Outro cliente"));
-
-            List<Cliente> todosClientes = clientes.obterTodos();
+            List<Cliente> todosClientes = clientes.findAll();
             //For aprimorado para rodar toda a lista e printar
             todosClientes.forEach(System.out::println);
 
+            System.out.println("Buscando por find");
+            //Função para procurar pelo nome
+            List<Object> nome = clientes.findByNome("Charles");
+            System.out.println("Nome: " + nome + " encontrado");
 
-            //Atualizar cliente
-            todosClientes.forEach(c -> {
-                c.setNome(c.getNome() + " atualizado");
-                clientes.atualizar(c);
-            });
 
-            //Buscar por nome
-            clientes.buscarPorNome("Cli").forEach(System.out::println);
+            System.out.println("Buscando por boolean");
+            //Função boolean para ver se o nome existe
+//            boolean exists = clientes.existsByNome("dll");
+            List<Cliente> exists = clientes.encontrarPorNome("dll");
+            System.out.println("Nome existe? " + exists);
 
-//            //Deletar
-//            clientes.obterTodos().forEach(c -> {
-//                clientes.deletar(c);
+
+
+//
+//            System.out.println("Atualizando clientes...");
+//            //Atualizar cliente
+//            todosClientes.forEach(c -> {
+//                c.setNome(c.getNome() + " atualizado");
+//                clientes.save(c);
 //            });
-
-
-
-            todosClientes = clientes.obterTodos();
-            if (todosClientes.isEmpty()){
-                System.out.println("Nenhum cliente encontrado!");
-
-            }else{
-                todosClientes.forEach(System.out::println);
-            }
+//
+//            //Buscar por nome
+//            clientes.findByNomeLike("Cli").forEach(System.out::println);
+////
+////            //Deletar
+////            clientes.findAll().forEach(c -> {
+////                clientes.delete(c);
+////            });
+//
+//
+//
+//            todosClientes = clientes.findAll();
+//            if (todosClientes.isEmpty()){
+//                System.out.println("Nenhum cliente encontrado!");
+//
+//            }else{
+//                todosClientes.forEach(System.out::println);
+//            }
 
 
 
