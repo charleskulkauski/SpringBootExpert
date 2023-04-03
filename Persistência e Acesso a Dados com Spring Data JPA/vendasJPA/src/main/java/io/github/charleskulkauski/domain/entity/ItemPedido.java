@@ -1,13 +1,26 @@
 package io.github.charleskulkauski.domain.entity;
 
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAnyAttribute;
 
+@Entity
+@Table(name = "item_pedido")
 public class ItemPedido {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name= "id")
     private Integer id;
+
+    @OneToMany
+    @JoinColumn(name = "pedido")
     private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
     private Produto produto;
+
+    @Column
     private Integer quantidade;
 
     public Integer getId() {

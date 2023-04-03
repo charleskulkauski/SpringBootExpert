@@ -1,4 +1,4 @@
-package io.github.charleskulkauski.domain.repositorio;
+package io.github.charleskulkauski.domain.repository;
 
 
 import io.github.charleskulkauski.domain.entity.Cliente;
@@ -25,7 +25,8 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     //@Param serve pra linkar o ":nome" da query com o parâmetro passado direto no método
     List<Cliente> encontrarPorNome(@Param("nome") String nome);
 
-    //Query sem a necessidade de um retorno
+    //Query sem a necessidade de um retorno, caso você queria modificar esse método que já existe através do @Query
+    //É preciso colocar a annotation @Modifying
     //void deleteByNome(String nome);
 
 

@@ -1,6 +1,7 @@
 package io.github.charleskulkauski.domain.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 //A presença do table só é necessária quando a classe não é do mesmo nome da sua tabela
@@ -17,6 +18,10 @@ public class Cliente {
     //Updatable = false ; propriedade que não permite dar update na tabela
     @Column(name = "nome", length = 100)
     private String nome;
+
+    //Obtendo os pedidos do cliente que foram referenciados aqui, lá da classe cliente
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidoSet;
 
     public Cliente() {
     }
