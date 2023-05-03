@@ -1,7 +1,6 @@
 package io.github.charleskulkauski.domain.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAnyAttribute;
 
 @Entity
 @Table(name = "item_pedido")
@@ -12,8 +11,8 @@ public class ItemPedido {
     @Column(name= "id")
     private Integer id;
 
-    @OneToMany
-    @JoinColumn(name = "pedido")
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
     @ManyToOne

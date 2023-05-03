@@ -24,7 +24,7 @@ public class Pedido {
 
     //nome da coluna, total de digitos, quatas casas decimais
     // exemplo: 1000.00
-    @Column(name = "total", length = 20, precision = 2)
+    @Column(name = "total", precision = 20, scale = 2)
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido")
@@ -68,5 +68,13 @@ public class Pedido {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "PEDIDO \n" +
+                "[ID]: ZN\n" + id +
+                "[DATA DO PEDIDO]: \n" + dataPedido +
+                "[TOTAL]: " + total ;
     }
 }

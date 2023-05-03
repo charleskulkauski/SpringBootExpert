@@ -19,9 +19,9 @@ public class Cliente {
     @Column(name = "nome", length = 100)
     private String nome;
 
-    //Obtendo os pedidos do cliente que foram referenciados aqui, lá da classe cliente
-    @OneToMany(mappedBy = "cliente")
-    private Set<Pedido> pedidoSet;
+    //Obtendo os pedidos do cliente que foram referenciados aqui, lá da classe clientes
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private Set<Pedido> pedidos;
 
     public Cliente() {
     }
@@ -29,6 +29,14 @@ public class Cliente {
     public Cliente(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public Cliente(String nome) {

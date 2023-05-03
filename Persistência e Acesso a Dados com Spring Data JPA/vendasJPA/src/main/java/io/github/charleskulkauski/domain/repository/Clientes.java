@@ -25,9 +25,18 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     //@Param serve pra linkar o ":nome" da query com o parâmetro passado direto no método
     List<Cliente> encontrarPorNome(@Param("nome") String nome);
 
+
     //Query sem a necessidade de um retorno, caso você queria modificar esse método que já existe através do @Query
     //É preciso colocar a annotation @Modifying
+    //@Query
+    //@Modifying
     //void deleteByNome(String nome);
+
+
+
+    //Carregando clientes com seus pedidos
+    @Query("select c from Cliente c left join fetch c.pedidos where c.id = :id")
+    Cliente findClienteFetchPedidos(@Param("id") Integer id);
 
 
 
