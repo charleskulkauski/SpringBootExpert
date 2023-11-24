@@ -17,6 +17,7 @@ import java.util.List;
 @Entity
 @Table(name = "pedido")
 public class Pedido {
+
     public Pedido(){}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

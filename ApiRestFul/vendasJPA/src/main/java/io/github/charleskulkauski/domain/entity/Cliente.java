@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Data
@@ -15,7 +17,6 @@ import java.util.Set;
 //A presença do table só é necessária quando a classe não é do mesmo nome da sua tabela
 //@Table(name="cliente")
 public class Cliente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     //Mapear para direcionar na coluna caso tenha nome diferente
@@ -23,58 +24,20 @@ public class Cliente {
     private Integer id;
 
     //Nome da coluna tem que ser igual ao da váriavel
-    //Updatable = false ; propriedade que não permite dar update na tabela
+    //Updatable = false; propriedade que não permite dar "update" na tabela
     @Column(name = "nome", length = 100)
+    @NotEmpty(message = "{campo.nome.obrigatorio]")
     private String nome;
 
-    //Obtendo os pedidos do cliente que foram referenciados aqui, lá da classe clientes
+    //Obtendo os pedidos do cliente referenciados aqui, lá da classe clientes
     @JsonIgnore //Ignorar este atributo
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private Set<Pedido> pedidos;
 
     @Column(name= "cpf", length= 11)
+    @NotEmpty(message = "{campo.cpf.obrigatorio}")
+    @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
-
-    public Cliente(Integer id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Set<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(Set<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public Cliente(String nome) {
-        this.nome = nome;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     @Override
     public String toString() {
