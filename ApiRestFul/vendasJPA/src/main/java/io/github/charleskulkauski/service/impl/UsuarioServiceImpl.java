@@ -3,7 +3,6 @@ package io.github.charleskulkauski.service.impl;
 import io.github.charleskulkauski.domain.entity.Usuario;
 import io.github.charleskulkauski.domain.repository.UsuarioRepository;
 import io.github.charleskulkauski.exception.SenhaInvalidaException;
-import jdk.jfr.Label;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.User;
