@@ -18,7 +18,7 @@ import java.util.Set;
 //@Table(name="cliente")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Mapear para direcionar na coluna caso tenha nome diferente
     @Column(name = "id")
     private Integer id;

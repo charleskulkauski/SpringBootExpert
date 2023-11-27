@@ -20,7 +20,7 @@ public class Pedido {
 
     public Pedido(){}
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     //Referenciando os relacionamentos, muitos para um
