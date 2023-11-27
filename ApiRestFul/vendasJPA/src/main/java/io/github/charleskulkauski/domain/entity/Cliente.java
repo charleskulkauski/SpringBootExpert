@@ -26,7 +26,7 @@ public class Cliente {
     //Nome da coluna tem que ser igual ao da váriavel
     //Updatable = false; propriedade que não permite dar "update" na tabela
     @Column(name = "nome", length = 100)
-    @NotEmpty(message = "{campo.nome.obrigatorio]")
+    @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
     //Obtendo os pedidos do cliente referenciados aqui, lá da classe clientes

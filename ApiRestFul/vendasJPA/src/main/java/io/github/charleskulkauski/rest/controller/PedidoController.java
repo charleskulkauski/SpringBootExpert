@@ -42,7 +42,6 @@ public class PedidoController {
     @ResponseStatus(HttpStatus.CREATED)
     public Integer save(@RequestBody @Valid PedidoDTO dto){
         Pedido pedido = service.salvar(dto);
-        System.out.println("ID: " + dto.getCliente());
         return pedido.getId();
     }
 
